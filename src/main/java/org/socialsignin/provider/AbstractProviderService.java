@@ -48,7 +48,7 @@ public abstract class AbstractProviderService<S> {
 	{
 
 		Connection<S> connection = getConnection(getApiClass());
-		if (connection != null)
+		if (connection != null && !connection.hasExpired())
 		{
 			return connection.getApi();
 		}
