@@ -2,62 +2,66 @@ package org.socialsignin.provider;
 
 
 
-import java.util.List;
+import javax.annotation.PostConstruct;
 
+import org.socialsignin.provider.strategy.authenticatedapi.AuthenticatedApiStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.connect.NotConnectedException;
-import org.springframework.social.connect.UsersConnectionRepository;
 
 
-public abstract class AbstractProviderService<S> {
+public abstract class AbstractProviderService<S,C extends AbstractProviderConfig<S>> implements ProviderService<S>{
 	
-	public abstract Class<S> getApiClass();
+	
+	private boolean registered;
+	
+	protected C providerConfig;
 	
 	@Autowired
-	private UsersConnectionRepository usersConnectionRepository;
-	
-	private String getAuthenticatedUserName() {
-		Authentication authentication = SecurityContextHolder.getContext()
-				.getAuthentication();
-		return authentication == null ? null : authentication.getName();
+	protected void setProviderConfig(C providerConfig)
+	{
+		this.providerConfig = providerConfig;
+	}
+
+	@PostConstruct
+	public void register()
+	{
+		if (!registered)
+		{
+			providerConfig.register();
+			this.registered=true;
+		}
 	}
 	
 	
-	private <T >Connection<T> getConnection(Class<T> clazz)
+	public AbstractProviderService()
 	{
-		try
-		{
-			if ( getAuthenticatedUserName() != null)
-			{
-				List<Connection<T>> connections = usersConnectionRepository.createConnectionRepository( getAuthenticatedUserName()).findConnections(clazz);
-				if (connections != null && connections.size() > 0) return connections.get(0);
-			}
-			return null;
-		}
-		catch (NotConnectedException exception)
-		{
-			return null;
-		}
+		
+	}
+		
+	public AbstractProviderService(C providerConfig)
+	{
+		this.providerConfig = providerConfig;
+		register();
 	}
 	
 	
 	public S getAuthenticatedApi()
 	{
-
-		Connection<S> connection = getConnection(getApiClass());
-		if (connection != null && !connection.hasExpired())
+		return providerConfig.getAuthenticatedApiStrategy().getAuthenticatedApi();
+	}
+	
+	public S getAuthenticatedApi(String userId)
+	{
+		AuthenticatedApiStrategy<S> usersAuthenticatedApiStrategy = providerConfig.getAuthenticatedApiStrategy(userId);
+		if (usersAuthenticatedApiStrategy != null)
 		{
-			return connection.getApi();
+			return usersAuthenticatedApiStrategy.getAuthenticatedApi();
 		}
 		else
 		{
 			return null;
 		}
+
 	}
-	
 	
 	
 	public abstract S getUnauthenticatedApi();
