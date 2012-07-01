@@ -7,6 +7,4 @@ public interface ProviderService<S> {
 	public S getUnauthenticatedApi();
 	public S getApi();
 
-
-
 }
