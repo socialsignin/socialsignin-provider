@@ -15,6 +15,9 @@ Modules currently available
 * <a href="https://github.com/socialsignin/socialsignin-soundcloud" >SocialSignin SoundCloud</a>
 * <a href="https://github.com/socialsignin/socialsignin-mixcloud" >SocialSignin MixCloud</a>
 
+Dealing with API Clients directly instead of with connections
+-------------------------------------------------------------
+
 The common use-cases which are supported by these modules are:
 
 - Obtaining an API client for general non-user authorised use.
@@ -39,11 +42,14 @@ public class TwitterProviderService implements ProviderService<Twitter> {
 
 ```
 
-This reduces the need to work with the lower-level connection apis of spring social when an 
+Behind the scenes the module is obtaining the APIs from the underlying connections, reducing the need to work with the lower-level connection apis of spring social when an 
 application simply wants to to deal with API Clients directly rather than connections to APIs. 
 
-The modules also enable auto-configuration of the provider-specific components from Spring-Social and 
-Spring-Social-Security through the setting of environment properties, and allow the component to be registered easlily and via component scanning.
+Auto-Registration/Configuration of Spring Social (and Spring-Social-Security ) provider-specific components
+-----------------------------------------------------------------------------
+
+The modules enable the auto-configuration of the provider-specific components from Spring-Social and 
+Spring-Social-Security through the setting of environment properties, and allow the component to be registered easily and via component scanning.
 eg.
 ```
 			<context:component-scan
