@@ -8,7 +8,7 @@ This reduces the need to work with the lower-level connection apis of spring soc
 application wants to to deal with APIs directly rather than connections to APIs. 
 
 The modules also enable configuration of provider-specific components from Spring-Social and Spring-Social-Security
-to to registered easlily and simply simple component scanning.
+to to registered easlily and via component scanning.
 
 Modules currently available
 ---------------------------
