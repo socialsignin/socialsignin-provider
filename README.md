@@ -18,10 +18,10 @@ eg.
 @Service
 public class TwitterProviderService implements ProviderService<Twitter> {  				
 		
-		public Twitter getAuthenticatedApi();
-		public Twitter getAuthenticatedApi(String userId);
-		public Twitter getUnauthenticatedApi();
-		public Twitter getApi();
+		public Twitter getAuthenticatedApi() {...}
+		public Twitter getAuthenticatedApi(String userId) {...}
+		public Twitter getUnauthenticatedApi() {...}
+		public Twitter getApi(); {...}
 	}
 
 ```
