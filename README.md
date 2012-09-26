@@ -65,7 +65,25 @@ This component scan:
 - Creates ProviderService beans for all SocialSignin providers on the classpath, available for injection
             into your components, giving access to the API Clients for the common use-cases.
       
+Quickstart Implementations
+--------------------------
 
+Part of the usual setup for Spring Social is to configure your application with a UsersConnectionRepository implementation, and
+with an request-scoped ConnectionRepository associated with the currently authenticated user.
+
+The default JdbcUsersConnectionRepository/JdbcConnectionRepository implementations require an application to configure
+datasources, and to populate the datasource with the authentication tokens for a provider connection. 
+
+To help developers get up and running quickly, this SocialSignin Provider module includes Quickstart implementations
+of these components ( QuickstartUsersConnectionRepository/QuickstartConnectionRepository ) which are simple in-memory
+versions.
+
+Using these Quickstart versions means that developers don't need to create local persistence to get up and running,
+and that the repositories can be easily initialised with authentication tokens obtained for testing when in develoment mode.
+
+
+Examples of Use
+---------------
 
 See <a href="https://github.com/socialsignin/socialsignin-showcase">SocialSignIn Showcase</a> or <a href="https://github.com/socialsignin/socialsignin-roo-showcase">SocialSignIn Roo Showcase</a>
 for simple "hello world" applications using these modules.
