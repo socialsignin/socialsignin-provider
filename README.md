@@ -13,10 +13,10 @@ to to registered easlily and simply simple component scanning.
 Modules currently available
 ---------------------------
 
-<a href="https://github.com/socialsignin/socialsignin-twitter" />SocialSignin Twitter</a>
-<a href="https://github.com/socialsignin/socialsignin-facebook" />SocialSignin Facebook</a>
-<a href="https://github.com/socialsignin/socialsignin-tumblr" />SocialSignin Tumblr</a>
-<a href="https://github.com/socialsignin/socialsignin-linkedin" />SocialSignin LinkedIn</a>
-<a href="https://github.com/socialsignin/socialsignin-lastfm" />SocialSignin LastFm</a>
-<a href="https://github.com/socialsignin/socialsignin-soundcloud" />SocialSignin SoundCloud</a>
-<a href="https://github.com/socialsignin/socialsignin-mixcloud" />SocialSignin MixCloud</a>
+* <a href="https://github.com/socialsignin/socialsignin-twitter" >SocialSignin Twitter</a>
+* <a href="https://github.com/socialsignin/socialsignin-facebook" >SocialSignin Facebook</a>
+* <a href="https://github.com/socialsignin/socialsignin-tumblr" >SocialSignin Tumblr</a>
+* <a href="https://github.com/socialsignin/socialsignin-linkedin" >SocialSignin LinkedIn</a>
+* <a href="https://github.com/socialsignin/socialsignin-lastfm" >SocialSignin LastFm</a>
+* <a href="https://github.com/socialsignin/socialsignin-soundcloud" >SocialSignin SoundCloud</a>
+* <a href="https://github.com/socialsignin/socialsignin-mixcloud" >SocialSignin MixCloud</a>
