@@ -29,8 +29,8 @@ public class TwitterProviderService implements ProviderService<Twitter> {
 This reduces the need to work with the lower-level connection apis of spring social when an 
 application simply wants to to deal with API Clients directly rather than connections to APIs. 
 
-The modules also enable configuration of provider-specific components from Spring-Social and Spring-Social-Security
-to to registered easlily and via component scanning.
+The modules also enable automatic configuration of provider-specific components from Spring-Social and 
+Spring-Social-Security based on environment property values, and allow the component to be registered easlily and via component scanning.
 eg.
 ```
 			<context:component-scan
