@@ -10,6 +10,9 @@ application wants to to deal with APIs directly rather than connections to APIs.
 The modules also enable configuration of provider-specific components from Spring-Social and Spring-Social-Security
 to to registered easlily and via component scanning.
 
+See <a href="https://github.com/socialsignin/socialsignin-showcase">SocialSignIn Showcase</a> or <a href="https://github.com/socialsignin/socialsignin-roo-showcase">SocialSignIn Roo Showcase</a>
+for simple "hello world" applications using these modules.
+
 Modules currently available
 ---------------------------
 
