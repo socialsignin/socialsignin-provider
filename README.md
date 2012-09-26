@@ -11,7 +11,12 @@ applications easy access to their chosen API clients for a number of common use-
 eg.
 
 ```
-public interface ProviderService<Twitter> {  				
+/**
+* This component is provided by the SocialSignin Twitter module, and will be available for injection into
+* your components by enabling component scanning for SocialSignIn modules
+*/
+@Service
+public class TwitterProviderService implements ProviderService<Twitter> {  				
 		
 		public Twitter getAuthenticatedApi();
 		public Twitter getAuthenticatedApi(String userId);
@@ -22,7 +27,7 @@ public interface ProviderService<Twitter> {
 ```
 
 This reduces the need to work with the lower-level connection apis of spring social when an 
-application wants to to deal with APIs directly rather than connections to APIs. 
+application simply wants to to deal with API Clients directly rather than connections to APIs. 
 
 The modules also enable configuration of provider-specific components from Spring-Social and Spring-Social-Security
 to to registered easlily and via component scanning.
