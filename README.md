@@ -2,7 +2,20 @@ SocialSignin Provider Modules
 =============================
 
 SocialSignin Provider Modules are thin wrappers around the corresponding Spring Social Modules which allow
-applications easy access to their chosen API clients for a number of common use-cases:
+applications easy access to their chosen API clients for a number of common use-cases.
+
+Modules currently available
+---------------------------
+
+* <a href="https://github.com/socialsignin/socialsignin-twitter" >SocialSignin Twitter</a>
+* <a href="https://github.com/socialsignin/socialsignin-facebook" >SocialSignin Facebook</a>
+* <a href="https://github.com/socialsignin/socialsignin-tumblr" >SocialSignin Tumblr</a>
+* <a href="https://github.com/socialsignin/socialsignin-linkedin" >SocialSignin LinkedIn</a>
+* <a href="https://github.com/socialsignin/socialsignin-lastfm" >SocialSignin LastFm</a>
+* <a href="https://github.com/socialsignin/socialsignin-soundcloud" >SocialSignin SoundCloud</a>
+* <a href="https://github.com/socialsignin/socialsignin-mixcloud" >SocialSignin MixCloud</a>
+
+The common use-cases which are supported by these modules are:
 
 - Obtaining an API client for general non-user authorised use.
 - Obtaining an authenticated API client acting on behalf of the currently authenticated user
@@ -29,8 +42,8 @@ public class TwitterProviderService implements ProviderService<Twitter> {
 This reduces the need to work with the lower-level connection apis of spring social when an 
 application simply wants to to deal with API Clients directly rather than connections to APIs. 
 
-The modules also enable automatic configuration of provider-specific components from Spring-Social and 
-Spring-Social-Security based on environment property values, and allow the component to be registered easlily and via component scanning.
+The modules also enable auto-configuration of the provider-specific components from Spring-Social and 
+Spring-Social-Security through the setting of environment properties, and allow the component to be registered easlily and via component scanning.
 eg.
 ```
 			<context:component-scan
@@ -51,13 +64,4 @@ This component scan:
 See <a href="https://github.com/socialsignin/socialsignin-showcase">SocialSignIn Showcase</a> or <a href="https://github.com/socialsignin/socialsignin-roo-showcase">SocialSignIn Roo Showcase</a>
 for simple "hello world" applications using these modules.
 
-Modules currently available
----------------------------
 
-* <a href="https://github.com/socialsignin/socialsignin-twitter" >SocialSignin Twitter</a>
-* <a href="https://github.com/socialsignin/socialsignin-facebook" >SocialSignin Facebook</a>
-* <a href="https://github.com/socialsignin/socialsignin-tumblr" >SocialSignin Tumblr</a>
-* <a href="https://github.com/socialsignin/socialsignin-linkedin" >SocialSignin LinkedIn</a>
-* <a href="https://github.com/socialsignin/socialsignin-lastfm" >SocialSignin LastFm</a>
-* <a href="https://github.com/socialsignin/socialsignin-soundcloud" >SocialSignin SoundCloud</a>
-* <a href="https://github.com/socialsignin/socialsignin-mixcloud" >SocialSignin MixCloud</a>
