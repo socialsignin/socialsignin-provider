@@ -33,18 +33,19 @@ The modules also enable configuration of provider-specific components from Sprin
 to to registered easlily and via component scanning.
 eg.
 ```
-      <!--  1) Creates and auto-registers ConnectionFactory beans with ConnectionFactoryRegistry for any socialsignin-provider modules on the classpath - configured
-              by properties set in the applications property file.
-            2) If your application uses Spring-Social-Security, this component scan also creates SpringSocialSecurityConnectInterceptors
-            for any SocialSignin Provider modules on the classpath and makes a list of these interceptors available
-            as a bean for injection into the ConnectController
-            3) Creates ProviderService beans for all SocialSignin providers on the classpath, available for injection
-            into your components, giving access to the API Clients for the common use-cases.
-      
 			<context:component-scan
 				base-package="org.socialsignin.provider" />
 ```
+This component scan:
 
+1) Creates and auto-registers ConnectionFactory beans with ConnectionFactoryRegistry for any socialsignin-provider modules on the classpath - configured
+              by properties set in the applications property file.
+2) If your application uses Spring-Social-Security, this component scan also creates SpringSocialSecurityConnectInterceptors
+            for any SocialSignin Provider modules on the classpath and makes a list of these interceptors available
+            as a bean for injection into the ConnectController
+3) Creates ProviderService beans for all SocialSignin providers on the classpath, available for injection
+            into your components, giving access to the API Clients for the common use-cases.
+      
 
 
 See <a href="https://github.com/socialsignin/socialsignin-showcase">SocialSignIn Showcase</a> or <a href="https://github.com/socialsignin/socialsignin-roo-showcase">SocialSignIn Roo Showcase</a>
