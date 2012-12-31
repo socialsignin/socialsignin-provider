@@ -20,10 +20,10 @@
 	<groupId>org.socialsignin</groupId>
 	<artifactId>socialsignin-provider</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>SocialSignIn Provider</name>
 	<properties>
-	   <org.socialsignin.springsocial.security.version>1.0.2.RELEASE</org.socialsignin.springsocial.security.version>
+	   <org.socialsignin.springsocial.security.version>1.0.3.RELEASE</org.socialsignin.springsocial.security.version>
 	</properties>
 	<distributionManagement>
 	 	<repository>
