@@ -24,10 +24,8 @@ import org.socialsignin.provider.strategy.connectionrepository.SpecifiedUserIdCo
 import org.socialsignin.springsocial.security.ConnectInterceptorList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.social.connect.ConnectionFactory;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
-import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.web.ConnectInterceptor;
 
 /** 
@@ -35,8 +33,6 @@ import org.springframework.social.connect.web.ConnectInterceptor;
 */
 public abstract class AbstractProviderConfig<S> {
 
-	@Autowired
-	private ConnectionFactoryRegistry connectionFactoryRegistry;
 	
 	@Autowired(required=false)
 	private ConnectionRepositoryStrategy connectionRepositoryStrategy;
@@ -123,47 +119,42 @@ public abstract class AbstractProviderConfig<S> {
 	}
 	
 
-	public AbstractProviderConfig(ConnectionRepositoryAuthenticatedApiStrategy<S> authenticatedApiStrategy,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(ConnectionRepositoryAuthenticatedApiStrategy<S> authenticatedApiStrategy)
 	{
 		this.specifiedAuthenticatedApiStrategy = authenticatedApiStrategy;
-		this.connectionFactoryRegistry = connectionFactoryRegistry;
 	}
 	
-	public AbstractProviderConfig(ConnectionRepository connectionRepository,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(ConnectionRepository connectionRepository)
 	{
-		this(new SpecifiedConnectionRepositoryStrategy(connectionRepository),connectionFactoryRegistry);
+		this(new SpecifiedConnectionRepositoryStrategy(connectionRepository));
 	}
 	
-	public AbstractProviderConfig(ConnectionRepository connectionRepository,UsersConnectionRepository usersConnectionRepository,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(ConnectionRepository connectionRepository,UsersConnectionRepository usersConnectionRepository)
 	{
-		this(new SpecifiedConnectionRepositoryStrategy(connectionRepository),usersConnectionRepository,connectionFactoryRegistry);
+		this(new SpecifiedConnectionRepositoryStrategy(connectionRepository),usersConnectionRepository);
 	}
 	
-	public AbstractProviderConfig(ConnectionRepositoryStrategy connectionRepositoryStrategy,UsersConnectionRepository usersConnectionRepository,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(ConnectionRepositoryStrategy connectionRepositoryStrategy,UsersConnectionRepository usersConnectionRepository)
 	{
 		this.connectionRepositoryStrategy = connectionRepositoryStrategy;
 		this.usersConnectionRepository = usersConnectionRepository;
-		this.connectionFactoryRegistry = connectionFactoryRegistry;
 	}
 	
 	
-	public AbstractProviderConfig(String userId,UsersConnectionRepository usersConnectionRepository,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(String userId,UsersConnectionRepository usersConnectionRepository)
 	{
 		this.connectionRepositoryStrategy = new SpecifiedUserIdConnectionRepositoryStrategy(usersConnectionRepository,userId);
 		this.usersConnectionRepository = usersConnectionRepository;
-		this.connectionFactoryRegistry = connectionFactoryRegistry;
 	}
 	
-	public AbstractProviderConfig(ConnectionRepositoryStrategy connectionRepositoryStrategy,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(ConnectionRepositoryStrategy connectionRepositoryStrategy)
 	{
 		this.connectionRepositoryStrategy = connectionRepositoryStrategy;
-		this.connectionFactoryRegistry = connectionFactoryRegistry;
 	}
 	
-	public AbstractProviderConfig(UsersConnectionRepository usersConnectionRepository,ConnectionRepositoryAuthenticatedApiStrategy<S> authenticatedApiStrategy,ConnectionFactoryRegistry connectionFactoryRegistry)
+	public AbstractProviderConfig(UsersConnectionRepository usersConnectionRepository,ConnectionRepositoryAuthenticatedApiStrategy<S> authenticatedApiStrategy)
 	{
 		this.specifiedAuthenticatedApiStrategy = authenticatedApiStrategy;
-		this.connectionFactoryRegistry = connectionFactoryRegistry;
 		this.usersConnectionRepository = usersConnectionRepository;
 	}
 	
@@ -177,16 +168,11 @@ public abstract class AbstractProviderConfig<S> {
 	@Qualifier("connectInterceptorList")
 	private ConnectInterceptorList connectInterceptorList;
 	
-	protected abstract ConnectionFactory<S> createConnectionFactory();
 	protected abstract ConnectInterceptor<S> getConnectInterceptor();
 	
 
 	public void register()
 	{
-		if (connectionFactoryRegistry !=null)
-		{
-			connectionFactoryRegistry.addConnectionFactory(createConnectionFactory());
-		}
 		if (connectInterceptorList != null)
 		{
 			connectInterceptorList.add(getConnectInterceptor());

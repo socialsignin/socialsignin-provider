@@ -6,18 +6,11 @@ import org.springframework.social.ExpiredAuthorizationException;
 public class ExpiredProviderConnectionAuthorizationException extends
 		ExpiredAuthorizationException {
 
-	private String providerId;
 	
 	public ExpiredProviderConnectionAuthorizationException(String providerId)
 	{
-		this.providerId = providerId;
+		super(providerId);
 	}
 
-	public String getProviderId() {
-		return providerId;
-	}
-	
-	
-	
 	
 }
