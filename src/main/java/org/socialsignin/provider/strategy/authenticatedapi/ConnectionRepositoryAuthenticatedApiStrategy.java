@@ -2,7 +2,6 @@ package org.socialsignin.provider.strategy.authenticatedapi;
 
 import java.util.List;
 
-import org.socialsignin.provider.ExpiredProviderConnectionAuthorizationException;
 import org.springframework.social.ExpiredAuthorizationException;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
@@ -77,11 +76,11 @@ public class ConnectionRepositoryAuthenticatedApiStrategy<S> implements
 			}
 			catch(Exception e)
 			{
-				throw new ExpiredProviderConnectionAuthorizationException(connection.createData().getProviderId());
+				throw new ExpiredAuthorizationException(connection.createData().getProviderId());
 			}
 			if (connection.hasExpired())
 			{
-				throw new ExpiredProviderConnectionAuthorizationException(connection.createData().getProviderId());
+				throw new ExpiredAuthorizationException(connection.createData().getProviderId());
 			}
 			connectionRepository.updateConnection(connection);
 			return connection.getApi();
